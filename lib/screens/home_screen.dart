@@ -23,6 +23,7 @@ class _homeScreenState extends State<homeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 1,
         title: Helper.rentico,
         backgroundColor: MyTheme.cream,
