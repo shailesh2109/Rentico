@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentico/screens/booking_history.dart';
+import 'package:rentico/screens/call_customer.dart';
 import 'package:rentico/screens/contact_support.dart';
 import 'package:rentico/utils/helper.dart';
 import 'package:rentico/utils/routes.dart';
@@ -41,6 +42,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   title: Text("List Vehicles",textScaleFactor: 1.2,style: TextStyle(color: Color.fromARGB(255, 66, 66, 66)),),
               ),
                ListTile(
+                onTap: () =>Navigator.push(context, MaterialPageRoute(builder: (context)=>CallCustomer())) ,
                 leading: Icon(
                   Icons.call),
                   title: Text("Call Customer",textScaleFactor: 1.2,style: TextStyle(color: Color.fromARGB(255, 66, 66, 66)),),

@@ -11,4 +11,7 @@ class MyRoutes{
 
    static HomeDetails(BuildContext context,Widget page)=>
    Navigator.push(context, MaterialPageRoute(builder: (context)=>page));
+
+   static Receive(BuildContext context, Widget page)=>
+   Navigator.push(context, MaterialPageRoute(builder: (context)=>page));
 }
