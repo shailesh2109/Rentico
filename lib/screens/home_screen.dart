@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rentico/screens/booking_form1.dart';
-import 'package:rentico/screens/receive_vehicle1.dart';
+import 'package:rentico/screens/make_booking.dart';
+import 'package:rentico/screens/receive_vehicle.dart';
 import 'package:rentico/screens/splash_screen.dart';
 import 'package:rentico/utils/helper.dart';
 import 'package:rentico/utils/routes.dart';
@@ -36,7 +36,7 @@ class _homeScreenState extends State<homeScreen> {
           Column(
             children: [
               InkWell(
-                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context)=>BookingForm1())),
+                onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context)=>MakeBooking())),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
