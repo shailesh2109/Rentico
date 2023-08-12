@@ -29,7 +29,7 @@ class _CallCustomerState extends State<CallCustomer> {
       body: Column(
         children: [
           Padding(padding: EdgeInsets.fromLTRB(16, 16, 16, 6),
-          child: Expanded(child: Container(
+          child: Container(
             padding: EdgeInsets.fromLTRB(16, 5, 16, 0),
             decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
@@ -61,10 +61,10 @@ class _CallCustomerState extends State<CallCustomer> {
                     
                   ],
                 ),
-          )),
+          ),
           ),
           Padding(padding: EdgeInsets.fromLTRB(16, 16, 16, 6),
-          child: Expanded(child: Container(
+          child: Container(
             padding: EdgeInsets.fromLTRB(16, 5, 16, 0),
             decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
@@ -96,10 +96,10 @@ class _CallCustomerState extends State<CallCustomer> {
                     
                   ],
                 ),
-          )),
+          ),
           ),
           Padding(padding: EdgeInsets.fromLTRB(16, 16, 16, 6),
-          child: Expanded(child: Container(
+          child: Container(
             padding: EdgeInsets.fromLTRB(16, 5, 16, 0),
             decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
@@ -131,10 +131,10 @@ class _CallCustomerState extends State<CallCustomer> {
                     
                   ],
                 ),
-          )),
+          ),
           ),
           Padding(padding: EdgeInsets.fromLTRB(16, 16, 16, 6),
-          child: Expanded(child: Container(
+          child: Container(
             padding: EdgeInsets.fromLTRB(16, 5, 16, 0),
             decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
@@ -166,7 +166,7 @@ class _CallCustomerState extends State<CallCustomer> {
                     
                   ],
                 ),
-          )),
+          ),
           ),
         ],
       )
