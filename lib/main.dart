@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rentico/screens/home_screen.dart';
 import 'package:rentico/screens/splash_screen.dart';
 import 'package:rentico/widgets/themes.dart';
 

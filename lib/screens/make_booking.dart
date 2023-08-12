@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:rentico/screens/home_screen.dart';
 import 'package:rentico/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
+import 'package:http/http.dart';
 
 class MakeBooking extends StatefulWidget {
   const MakeBooking({super.key});
@@ -13,7 +13,11 @@ class MakeBooking extends StatefulWidget {
 }
 
 class _MakeBookingState extends State<MakeBooking> {
+  
   List<GlobalKey<FormState>> formkeys=[GlobalKey<FormState>(),GlobalKey<FormState>(),GlobalKey<FormState>()];
+  List list=["hell","hello"];
+  List countryList=['Afghanistan', 'Aland Islands', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bonaire', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Cocos Islands', 'Colombia', 'Comoros', 'Congo', 'Cook Islands', 'Costa Rica', "Côte d'Ivoire", 'Croatia', 'Cuba', 'Curaçao', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Holy See', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', "Korea", 'Korea, Republic of', 'Kuwait', 'Kyrgyzstan', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao', 'Macedonia, Republic of', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia, Federated States of', 'Moldova, Republic of', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestinian Territory, Occupied', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Réunion', 'Romania', 'Russian Federation', 'Rwanda', 'Saint Barthélemy', 'Saint Helena', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Martin (French part)', 'Saint Pierre and Miquelon', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Sint Maarten (Dutch part)', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'South Sudan', 'Svalbard and Jan Mayen', 'Swaziland', 'Sweden', 'Switzerland', 'Syrian Arab Republic', 'Taiwan, Province of China', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Viet Nam', 'Virgin Islands, British', 'Virgin Islands, U.S.', 'Wallis and Futuna', 'Yemen', 'Zambia', 'Zimbabwe'];
+  String valueChoose="India";
   List<Step>getSteps()=>[
     Step(
       state: currentStep>0?StepState.complete:StepState.indexed,
@@ -23,6 +27,7 @@ class _MakeBookingState extends State<MakeBooking> {
         key: formkeys[0],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          
           children: [
             "Customer Name*".text.make(),
             SizedBox(height: 12,),
@@ -61,18 +66,25 @@ class _MakeBookingState extends State<MakeBooking> {
             SizedBox(height: 10,),
             "Nationality*".text.make(),
             SizedBox(height: 12,),
-            TextFormField(
-              decoration: 
-              InputDecoration(border: OutlineInputBorder(),
-              hintText: "Melon Tusk"),
-              validator:(value) {
-                if(value==null||value.isEmpty){
-                  return "Enter Customer Name";
-                }
-                return null;
-              },
-              
-            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all()
+              ),
+              child: DropdownButton(
+                hint: "Choose your Country".text.make(),
+                isExpanded: true,
+                value: valueChoose,
+                style: TextStyle(fontSize: 18,color: Color.fromARGB(255, 66, 66, 66)),
+                underline: SizedBox(),
+                items: countryList.map((e) => DropdownMenuItem(child: Text(e),value: e,)).toList(),
+                onChanged:(value) {
+                  setState(() {
+                   valueChoose=value as String;
+                 });
+               },),
+            ).h(60),
             SizedBox(height: 10,),
             "License Number*".text.make(),
             SizedBox(height: 12,),
@@ -82,7 +94,7 @@ class _MakeBookingState extends State<MakeBooking> {
               hintText: "UP XXXX XXXX XXXXX"),
               validator:(value) {
                 if(value==null||value.isEmpty){
-                  return "Enter valid no.";
+                  return "Enter License no.";
                 }
                 return null;
               },
@@ -193,7 +205,7 @@ class _MakeBookingState extends State<MakeBooking> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 
-                "We have sent a verification code to*".text.xl.make(),
+                "Enter verification code*".text.xl.make(),
                 SizedBox(height: 12,),
                 Form(
                   key: formkeys[2],

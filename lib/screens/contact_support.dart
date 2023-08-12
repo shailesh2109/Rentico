@@ -11,10 +11,13 @@ class ContactSupport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      appBar: AppBar(
-        leading: IconButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>homeScreen())), icon: Icon(Icons.arrow_back_ios)),
+      appBar: AppBar( elevation: 1,
+        
+        backgroundColor: MyTheme.cream,
         automaticallyImplyLeading: false,
-        title: Text("       Contact Support",style: TextStyle(color: Color.fromARGB(255, 66, 66, 66))),
+        leading: IconButton(onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder:(context)=>homeScreen())), icon: Icon(Icons.arrow_back_ios)),
+        title: Text("        Contact Support",style: TextStyle(color: Color.fromARGB(255, 66, 66, 66)),),
+      
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -45,7 +48,7 @@ class ContactSupport extends StatelessWidget {
                   ),
                   Container(
                     child: Icon(Icons.message_outlined,color: Colors.white,),
-                    color: Color(0xff2F50A9),
+                    color: MyTheme.renico_blue,
                   ).wh(50, 50),
                   
                 ],
@@ -76,7 +79,7 @@ class ContactSupport extends StatelessWidget {
                   ),
                   Container(
                     child: Icon(Icons.call,color: Colors.white,),
-                    color: Color(0xff2F50A9),
+                    color: MyTheme.renico_blue,
                   ).wh(50, 50),
                   
                 ],
