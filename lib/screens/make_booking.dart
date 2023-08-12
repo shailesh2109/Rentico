@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:rentico/screens/home_screen.dart';
 import 'package:rentico/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
+import 'package:http/http.dart';
 
 class MakeBooking extends StatefulWidget {
   const MakeBooking({super.key});
@@ -205,7 +205,7 @@ class _MakeBookingState extends State<MakeBooking> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 
-                "We have sent a verification code to*".text.xl.make(),
+                "Enter verification code*".text.xl.make(),
                 SizedBox(height: 12,),
                 Form(
                   key: formkeys[2],
